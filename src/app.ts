@@ -1,24 +1,12 @@
-interface Greetable {
-    readonly name: string;
+const names: Array<string | number> =  [];
 
-    greet(phrase: string): void;
-}
 
-class Person implements Greetable {
-    name: string;
-    age = 30;
-    constructor(n: string) {
-        this.name = n;
-    }
+const promise: Promise<number> = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve(10);
+    }, 2000)
+})
 
-    greet(phrase: string) {
-        console.log(phrase + ' ' + this.name)
-    }
-}
-
-let user1: Greetable;
-
-user1 = new Person('Max');
-console.log(user1)
-
-user1.greet('Hello I am');
+promise.then(data => {
+    // data.split(' ');
+})
