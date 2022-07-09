@@ -1,10 +1,14 @@
 "use strict";
-const names = [];
-const promise = new Promise((resolve, reject) => {
-    setTimeout(() => {
-        resolve(10);
-    }, 2000);
-});
-promise.then(data => {
-    // data.split(' ');
-});
+class ProjectInput {
+    constructor() {
+        this.templateElement = document.getElementById('project-input');
+        this.hostElement = document.getElementById('app');
+        const importedNode = document.importNode(this.templateElement.content, true);
+        this.element = importedNode.firstElementChild;
+        this.attach();
+    }
+    attach() {
+        this.hostElement.insertAdjacentElement('afterbegin', this.element);
+    }
+}
+const prjInput = new ProjectInput();

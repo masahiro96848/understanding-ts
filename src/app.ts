@@ -1,12 +1,20 @@
-const names: Array<string | number> =  [];
+class ProjectInput {
+    templateElement: HTMLTemplateElement;
+    hostElement: HTMLDivElement;
+    element: HTMLElement;
 
+    constructor() {
+        this.templateElement = document.getElementById('project-input')! as HTMLTemplateElement;
+        this.hostElement = document.getElementById('app')! as HTMLDivElement;
 
-const promise: Promise<number> = new Promise((resolve, reject) => {
-    setTimeout(() => {
-        resolve(10);
-    }, 2000)
-})
+        const importedNode = document.importNode(this.templateElement.content, true);
+        this.element = importedNode.firstElementChild as HTMLFormElement;
+        this.attach();
+    }
 
-promise.then(data => {
-    // data.split(' ');
-})
+    private attach() {
+        this.hostElement.insertAdjacentElement('afterbegin', this.element);
+    }
+}
+
+const prjInput = new ProjectInput();
